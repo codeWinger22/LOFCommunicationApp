@@ -8,94 +8,94 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
         /* General Styling */
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    overflow: hidden;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            overflow: hidden;
+        }
 
-/* Background Animation */
-.animated-bg {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(0, 255, 255, 0.2) 10%, transparent 80%);
-    animation: pulse 5s infinite alternate ease-in-out;
-}
+        /* Background Animation */
+        .animated-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.2) 10%, transparent 80%);
+            animation: pulse 5s infinite alternate ease-in-out;
+        }
 
-@keyframes pulse {
-    from { opacity: 0.5; }
-    to { opacity: 1; }
-}
+        @keyframes pulse {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
 
-/* Floating Cyber Particles */
-.animated-bg::before {
-    content: "";
-    position: absolute;
-    width: 150%;
-    height: 150%;
-   
-    animation: moveBg 20s linear infinite;
-}
+        /* Form Container - Glassmorphism */
+        .form-container {
+            width: 90%;
+            max-width: 500px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            text-align: center;
+        }
 
-@keyframes moveBg {
-    from { transform: translate(0, 0); }
-    to { transform: translate(-10%, -10%); }
-}
+        /* Input Fields */
+        .form-control {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
+        }
 
-/* Form Container - Glassmorphism */
-.form-container {
-    width: 40%;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-}
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
 
-/* Input Fields */
-.form-control {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: white;
-}
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px cyan;
+        }
 
-.form-control::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-}
+        /* Buttons */
+        .btn {
+            width: 100%;
+            transition: all 0.3s ease-in-out;
+        }
 
-.form-control:focus {
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 10px cyan;
-}
+        .btn-primary {
+            background: cyan;
+            border: none;
+            color: black;
+        }
 
-/* Buttons */
-.btn {
-    width: 48%;
-    transition: all 0.3s ease-in-out;
-}
+        .btn-success {
+            background: limegreen;
+            border: none;
+            color: black;
+        }
 
-.btn-primary {
-    background: cyan;
-    border: none;
-    color: black;
-}
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px white;
+        }
 
-.btn-success {
-    background: limegreen;
-    border: none;
-    color: black;
-}
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-container {
+                width: 95%;
+                padding: 15px;
+            }
 
-.btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px white;
-}
+            .btn {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
 
     </style>
 </head>
@@ -117,7 +117,7 @@ body {
                 <input type="text" class="form-control" name="key" id="key" required value="{{ key }}">
             </div>
 
-            <div class="d-flex justify-content-between">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-between">
                 <button type="submit" name="encrypt" class="btn btn-primary">Encrypt</button>
                 <button type="submit" name="decrypt" class="btn btn-success">Decrypt</button>
             </div>
